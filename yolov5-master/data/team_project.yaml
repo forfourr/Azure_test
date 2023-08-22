@@ -1,0 +1,12 @@
+train: ./dataset_final/train/images/  # train images (relative to 'path') 128 images
+val: ./dataset_final/val/images/  # val images (relative to 'path') 128 images
+
+
+# Classes
+names:
+  0: Traffic Light
+  1: limit sign
+  2: Stop sign
+  3: animal
+  4: car
+  5: human
