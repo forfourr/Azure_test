@@ -3,7 +3,6 @@ import os
 import glob
 import cv2
 import edgetpu.detection.engine
-#from pycoral.utils import edgetpu
 
 model_path = "runs/train/exp2/weights/best-fp16.tflite"
 engine = edgetpu.detection.engine.DetectionEngine(model_path)
