@@ -1,25 +1,15 @@
-import argparse
-import time
-from pathlib import Path
-
+import os
+#import torch
+import glob
 import cv2
-import torch
-import torch.backends.cudnn as cudnn
-from numpy import random
-import numpy as np
-from utils.datasets import LoadStreams, LoadImages
-from utils.general import check_img_size, non_max_suppression, apply_classifier, scale_coords, xyxy2xywh, \
-    strip_optimizer, set_logging, increment_path
-from utils.plots import plot_one_box
-from utils.torch_utils import select_device, load_classifier, time_synchronized
-import importlib.util
+# import edgetpu.detection.engine
+from tflite_runtime.interpreter import Interpreter
 from tflite_runtime.interpreter import load_delegate
 
-
-model_path = "runs/train/exp2/weights/best-fp16.tflite"
-engine = edgetpu.detection.engine.DetectionEngine(model_path)
-# model = torch.hub.load("ultralytics/yolov5", 'custom', path="./runs/train/exp2/weights/best.pt")
-# model.cuda()
+model_path = "yolov5-master/runs/train/exp2/weights/best-int8.tflite"
+interpreter = Interpreter(model_path=model_path,
+                              experimental_delegates=[load_delegate('libedgetpu.so.1.0')])
+exit()
 
 # print(model)D
 
